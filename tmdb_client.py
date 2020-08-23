@@ -9,3 +9,7 @@ def get_popular_movies():
     }
     response = requests.get(endpoint, headers=headers)
     return response.json()
+
+def get_poster_url(poster_api_path, poster_size = "w342"):
+    base_url = "https://image.tmdb.org/t/p"
+    return  f"{base_url}/{poster_size}/{poster_api_path}"

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect
 from flask import request
-import tbdb_client as tc
+import tmdb_client as tc
 import os
 
 app=Flask(__name__)
