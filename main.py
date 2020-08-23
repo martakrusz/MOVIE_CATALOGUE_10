@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect
 from flask import request
-import tmdb_client as tc
+import tbdb_client as tc
 import os
 
 app=Flask(__name__)
@@ -14,3 +14,4 @@ def homepage():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
