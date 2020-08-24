@@ -1,4 +1,6 @@
 import requests
+import random
+
 
 
 def get_popular_movies():
@@ -13,3 +15,13 @@ def get_popular_movies():
 def get_poster_url(poster_api_path, poster_size = "w342"):
     base_url = "https://image.tmdb.org/t/p"
     return  f"{base_url}/{poster_size}/{poster_api_path}"
+
+def get_movie_info(movies):
+    movies_list = []
+    for i in movies:
+        movies_list.append({"title": i["title"], "poster_path": i["poster_path"]})
+    return movies_list
+
+def get_movies(how_many):
+    data = get_popular_movies()
+    return data["results"][:how_many]
