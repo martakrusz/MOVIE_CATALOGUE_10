@@ -21,7 +21,8 @@ def homepage():
 @app.route("/movie/<movie_id>")
 def movie_details(movie_id):
     details = tc.get_single_movie(movie_id)
-    return render_template("movie_details.html", movie=details)
+    cast = tc.get_single_movie_cast(movie_id)[:4]
+    return render_template("movie_details.html", movie=details, cast=cast)
 
 if __name__ == '__main__':
     app.run(debug=True)
