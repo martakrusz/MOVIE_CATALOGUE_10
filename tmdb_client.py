@@ -24,7 +24,7 @@ def get_movies_list(list_type="popular"):
     return response.json()
 
 def get_movies(how_many, list_type):
-    data = get_movies_list()
+    data = get_movies_list(list_type)
     return data["results"][:how_many]
 
 def get_poster_url(poster_api_path, poster_size = "w342"):
