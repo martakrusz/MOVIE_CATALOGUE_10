@@ -15,7 +15,7 @@ def utility_processor():
 
 @app.route('/')
 def homepage():
-    list = ["popular", "top_rated", "now_playing", "latest", "upcoming"]
+    list = ["popular", "top_rated", "now_playing", "upcoming"]
     selected_list = request.args.get('list_type', "popular")
     if selected_list in list:
         movies = tc.get_movies(how_many=8, list_type=selected_list)
