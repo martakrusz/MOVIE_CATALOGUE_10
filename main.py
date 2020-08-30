@@ -18,12 +18,8 @@ def homepage():
     list = ["popular", "top_rated", "now_playing", "upcoming"]
     selected_list = request.args.get('list_type', "popular")
     if selected_list in list:
-        if selected_list == 'nonexisting':
-            movies = tc.get_movies(how_many=8, list_type="popular")
-            return render_template("homepage.html", movies=movies, current_list=movies, lists=list, active = selected_list)
-        else:
-            movies = tc.get_movies(how_many=8, list_type=selected_list)
-            return render_template("homepage.html", movies=movies, current_list=movies, lists=list, active = selected_list)
+        movies = tc.get_movies(how_many=8, list_type=selected_list)
+        return render_template("homepage.html", movies=movies, current_list=movies, lists=list, active = selected_list)
     else:
         movies = tc.get_movies(how_many=8, list_type="popular")
         return render_template("homepage.html", movies=movies, current_list=movies, lists=list)
