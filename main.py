@@ -22,7 +22,7 @@ def homepage():
         return render_template("homepage.html", movies=movies, current_list=movies, lists=list, active = selected_list)
     else:
         movies = tc.get_movies(how_many=8, list_type="popular")
-        return render_template("homepage.html", movies=movies, current_list=movies, lists=list)
+        return render_template("homepage.html", movies=movies, current_list=movies, lists=list, active = "popular")
 
 @app.route("/movie/<movie_id>")
 def movie_details(movie_id):
