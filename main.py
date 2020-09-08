@@ -33,6 +33,7 @@ def movie_details(movie_id):
     image_url = random_image[0]['file_path']
     return render_template("movie_details.html", movie=details, cast=cast, image_url=image_url)
 
+
 if __name__ == '__main__':
     app.run(debug=True)
 
