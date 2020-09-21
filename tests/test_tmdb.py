@@ -42,16 +42,8 @@ def test_get_single_movie(monkeypatch):
 
    movie = tmdb_client.get_single_movie(1)
    assert movie == mock_single_movie
-"""
-def test_get_movie_images(monkeypatch):
-   mock_movie_image = {'img1':'someurl'}
-   request_mock = Mock()
-   response = request_mock.return_value
-   response.json.return_value = get_single_movie_image
-   monkeypatch.setattr('tmdb_client.requests.get', request_mock)
 
-   image = tmdb_client.get_movie_images(1)
-   assert image == mock_movie_image"""
+
 
 def test_get_single_movie_cast():
    mock_movie_cast = ['cast1', 'cast2']
