@@ -5,6 +5,7 @@ import os
 from random import sample, randrange
 from waitress import serve
 
+
 app=Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('marta_config.cfg', silent=True)
 
@@ -37,5 +38,5 @@ def movie_details(movie_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
-    #serve(app, host='0.0.0.0', port=80)
+    serve(app, host='0.0.0.0', port=80)
 
