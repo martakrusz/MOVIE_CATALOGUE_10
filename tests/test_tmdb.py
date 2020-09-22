@@ -28,7 +28,6 @@ def test_get_movies_list(monkeypatch):
    response.json.return_value = mock_movies_list
    monkeypatch.setattr("tmdb_client.requests.get", requests_mock)
 
-
    movies_list = tmdb_client.get_movies_list(list_type="popular")
    assert movies_list == mock_movies_list
 
@@ -44,8 +43,17 @@ def test_get_single_movie(monkeypatch):
    assert movie == mock_single_movie
 
 
-
 def test_get_single_movie_cast():
    mock_movie_cast = ['cast1', 'cast2']
    cast = tmdb_client.get_single_movie_cast(100)
    assert type(cast) == type(mock_movie_cast)
+
+@pytest.mark.parametrize('list_type', (('popular'), ('now_playing'), ('top_rated'), ('upcoming')))
+def test_homepage(monkeypatch, list_type):
+    api_mock = Mock(return_value={'results': []})
+    monkeypatch.setattr("tmdb_client.call_tmdb_api", api_mock)
+
+    with app.test_client() as client:
+        response = client.get(f'/?list_type={list_type}')
+        assert response.status_code == 200
+        api_mock.assert_called_once_with(f'movie/{list_type}')
